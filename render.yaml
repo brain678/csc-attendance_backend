@@ -1,0 +1,22 @@
+services:
+  - type: web
+    name: csc-attendance-backend
+    env: docker
+    plan: starter
+    branch: main
+    dockerfilePath: Dockerfile
+    autoDeploy: true
+    healthCheckPath: /
+    envVars:
+      - key: MONGODB_DATABASE
+        value: workspace_center
+      - key: ALLOWED_ORIGINS
+        value: http://localhost:3000,http://localhost:3001,http://localhost:3002
+      - key: RESEND_FROM_EMAIL
+        value: noreply@cchub.com
+      - key: RESEND_FROM_NAME
+        value: CSCATTENDANCE Entry System
+      # Set the following values in Render dashboard secrets:
+      # - MONGODB_URL
+      # - SECRET_KEY
+      # - RESEND_API_KEY
