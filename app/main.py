@@ -30,6 +30,7 @@ from app.api import (
 async def lifespan(app: FastAPI):
     # Startup
     print("🚀 CSCATTENDANCE - Workspace Center Access Management System Starting...")
+    print("✅ CORS allowed origins:", settings.get_allowed_origins)
     await connect_to_mongo()
     print("✅ Connected to MongoDB")
     yield

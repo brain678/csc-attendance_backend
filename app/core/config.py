@@ -40,10 +40,27 @@ class Settings(BaseSettings):
     
     @property
     def get_allowed_origins(self) -> List[str]:
-        """Parse allowed origins as a list"""
+        """Parse allowed origins as a list and normalize trailing slash variants."""
         if isinstance(self.allowed_origins, list):
-            return self.allowed_origins
-        return [origin.strip() for origin in self.allowed_origins.split(",")]
+            raw_origins = self.allowed_origins
+        else:
+            raw_origins = [origin.strip() for origin in self.allowed_origins.split(",") if origin.strip()]
+
+        normalized: List[str] = []
+        for origin in raw_origins:
+            origin_no_slash = origin.rstrip("/")
+            normalized.append(origin_no_slash)
+            normalized.append(f"{origin_no_slash}/")
+
+        # Deduplicate while preserving order
+        seen = set()
+        result: List[str] = []
+        for origin in normalized:
+            if origin not in seen:
+                seen.add(origin)
+                result.append(origin)
+
+        return result
 
 
 settings = Settings()
