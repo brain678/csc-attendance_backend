@@ -11,7 +11,7 @@ services:
       - key: MONGODB_DATABASE
         value: workspace_center
       - key: ALLOWED_ORIGINS
-        value: http://localhost:3000,http://localhost:3001,http://localhost:3002,https://csc-attendance-admin.vercel.app,https://csc-attendance-admin-lkhrmco78-brains-projects-124ecd14.vercel.app
+        value: http://localhost:3000,http://localhost:3001,http://localhost:3002,https://csc-attendance-admin.vercel.app,https://csc-attendance-admin-lkhrmco78-brains-projects-124ecd14.vercel.app,https://kiosk-rust.vercel.app,https://kiosk-o4trldgv5-brains-projects-124ecd14.vercel.app
       - key: RESEND_FROM_EMAIL
         value: noreply@cchub.com
       - key: RESEND_FROM_NAME
